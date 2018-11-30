@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Around</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="{% static "home/css/style.css" %}">
+	<script type="text/javascript" src="{% static "home/js/main.js" %}"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static "home/css/fullpage.css" %}">
+    <script src="{% static "home/js/easings.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "home/js/fullpage.js" %}"></script>
+
+
+    <style>.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}</style>
+</head>
+<body>
+		<nav class="navbar navbar-expand-xl navbar-dark bg-dark sticky-top">
+			<div class="container">
+				<a href="#!" class="navbar-brand">Hello!</a>
+				<button class="navbar-toggler" data-toggle="collapse" data-target="#mobilenav">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="mobilenav">
+					<ul class="navbar-nav ml-auto text-center">
+						<li class="nav-item">
+							<a href="" class="nav-link">home </a>
+						</li>
+						<li class="nav-item">
+							<a href="" class="nav-link">About </a>
+						</li>
+						<li class="nav-item">
+							<a href="" class="nav-link">Contact </a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right" style="margin-left: 10px;">
+      
+      <li><a href="register"><i class="fas fa-sign-in-alt" style="margin-right: 5px;"></i>Login</a></li>
+    </ul>
+				</div>
+			</div>
+		</nav>
+		<div id="fullpage">
+			<div class="section" style="background-image: url({% static "home/img/bg.png" %});
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right 65%;
+    background-size: 40%;
+    height: 626px; ">
+			<div class="home-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="home-text">
+								<h2>Around</h2>
+								<p class="hidden-xs">
+									You’ve gone incognitoNow you can browse privately, and other people who use this device won’t see your activity. However, downloads and bookmarks will be saved.
+								</p>
+								<a href="#!" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Proced</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section" style="background: url({% static "home/img/bg2.png" %}) no-repeat center ;">
+		<div class="container">
+			<form method="get" action="/search" autocomplete="off">
+				<div class="input-group" style="width: 70%; margin: -15% auto;">
+					<input type="text" class="form-control input-lg" id='input-lg' ; style="height: 70px;
+  background-color: rgba(255, 255, 255, 0.5);
+ 
+  z-index: 9;
+ font-size: 40px; padding: 20px;" placeholder="Specialization ...." name="search">
+					<div class="input-group-btn">
+						<button class="btn" style="
+  border-width: 1px;
+  border-color: rgb(193, 193, 193);
+  border-style: solid;
+  
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+
+  z-index: 10;
+
+height: 70px;" type="submit">
+							<i class="fas fa-search" style="font-size: 20px;"></i><span style="margin: 0 10px; font-size: 20px;">Find Now</span>
+							
+						</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+    $('#fullpage').fullpage({
+      
+    });
+});
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+     var availableTags = [
+            {% for cat in categories %}
+                "{{cat}}",
+            {% endfor %}
+          ];
+
+
+          function autocomplete(inp, arr) {
+
+  var currentFocus;
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      this.parentNode.appendChild(a);
+      for (i = 0; i < arr.length; i++) {
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          b = document.createElement("DIV");
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          b.addEventListener("click", function(e) {
+              inp.value = this.getElementsByTagName("input")[0].value;
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        currentFocus++;
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        currentFocus--;
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        e.preventDefault();
+        if (currentFocus > -1) {
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    if (!x) return false;
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+      });
+}
+autocomplete(document.getElementById("input-lg"),availableTags );
+</script>
