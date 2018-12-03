@@ -20,8 +20,7 @@ def details(request,pk):
 
 
 def form(request):
-    template_name = 'form.html'
-
+    template_name = 'login.html'
     logout(request)
     print(request.user.is_authenticated)
     if not request.user.is_authenticated:
@@ -72,4 +71,14 @@ def bookDoctor(request,pk):
     # print(request.user.email)
     return render(request,'booking-page.html',context={'doctor':doc,})
 
+def register(request):
+    if request.method=='POST':
+        post=request.POST
+        email=post.get('email',None)
+        name=post.get('name',None)
+        password=post.get('pass',None)
+        userprofile=UserProfile.objects.create(name=name,email=email)
+        userprofile.set_password(password)
+        userprofile.save()
+        return HttpResponse('success')
 
