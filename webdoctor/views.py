@@ -59,7 +59,6 @@ def form(request):
         return redirect('/')
 
 
-@login_required(login_url=LOGIN_URL)
 def search(request):
     if request.method=="GET":
         data=request.GET
