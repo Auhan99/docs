@@ -6,6 +6,16 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from suraj.settings import LOGIN_URL
 from django.shortcuts import get_object_or_404
+from .key import key
+import json
+
+def getnear(request):
+    lat=""
+    lag=""
+    url="https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat","+lag+"&key="+key
+    address=request.get(url).json()
+    
+
 
 def home(request):
     categories= categorie.objects.all()
