@@ -12,9 +12,9 @@ import json
 def getnear(request):
     lat=""
     lag=""
-    url="https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat","+lag+"&key="+key
-    address=request.get(url).json()
-    
+    url="https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lag+"&key="+key
+    address=request.get(url).json()    ##remove .json() if error pops up
+    postal_code=address['results'][0]['address_components'][6]['long_name']
 
 
 def home(request):

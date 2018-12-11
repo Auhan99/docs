@@ -28,6 +28,7 @@ class UserManager(UserManager):
         return self._create_user(email, password, **extra_fields)
 
 
+
 class UserProfile(AbstractBaseUser,PermissionsMixin):
     name=models.CharField(max_length=255,unique=False)
     email=models.EmailField(max_length=255,unique=True)
@@ -49,15 +50,34 @@ class categorie(models.Model):
     def __str__(self):
         return "%s " %(self.category )
 
+
+class Pin(models.Model):
+    pin=models.CharField(max_length=100,null=True)
+    def __str__(self):
+        return "%s " %(self.pin )
+
+
 class doctor(models.Model):
     category=models.ForeignKey(categorie,null=True, blank=True, related_name='cat',on_delete=models.CASCADE)
     doctorName=models.CharField(max_length=100,null=True)
     shortinfo = models.CharField(max_length=250, null=True)
     address=models.CharField(max_length=250,null=True)
+    Pin=models.ForeignKey(Pin,null=True, blank=True, related_name='pun',on_delete=models.CASCADE)
     phone = models.CharField(max_length=250, null=True)
     professionalstatement = models.CharField(max_length=250, null=True)
     education = models.CharField(max_length=250, null=True)
     price = models.CharField(max_length=250, null=True)
     def __str__(self):
         return "%s %s" %(self.doctorName, self.category )
+
+class City(models.Model):
+    City_Name=models.CharField(max_length=100,null=True)
+    def __str__(self):
+        return "%s " %(self.City_Name )
+
+
+class PinCode(models.Model):
+    city=models.ForeignKey(City,null=True, blank=True, related_name='cat',on_delete=models.CASCADE)
+    Pin=models.ForeignKey(Pin,null=True, blank=True, related_name='pn',on_delete=models.CASCADE)
+    doctor= models.ManyToManyField(doctor,blank=True)
 

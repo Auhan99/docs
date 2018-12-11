@@ -1,1 +1,1 @@
-ky="AIzaSyCMzgXhvxafDClVxRy5gkvDNbSmtBH3FcQ"
+key="AIzaSyCMzgXhvxafDClVxRy5gkvDNbSmtBH3FcQ"
