@@ -14,7 +14,8 @@ def getnear(request,lat,lag):
     url="https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lag+"&key="+key
     address=request.get(url).json()    ##remove .json() if error pops up
     postal_code=address['results'][0]['address_components'][6]['long_name']
-    docs=doctor.objects.filter(pin=postal_code)
+    pin=PinCode.objects.filter(pin=postal_code)
+    docs=doctor.objects.filter(pin=pin)
     return JsonResponse({'doctors':docs,})
 
 
