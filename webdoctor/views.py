@@ -8,13 +8,14 @@ from suraj.settings import LOGIN_URL
 from django.shortcuts import get_object_or_404
 from .key import key
 import json
+from django.http import JsonResponse
 
-def getnear(request):
-    lat=""
-    lag=""
+def getnear(request,lat,lag):
     url="https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lag+"&key="+key
     address=request.get(url).json()    ##remove .json() if error pops up
     postal_code=address['results'][0]['address_components'][6]['long_name']
+    docs=doctor.objects.filter(pin=postal_code)
+    return JsonResponse({'doctors':docs,})
 
 
 def home(request):
