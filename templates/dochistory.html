@@ -95,16 +95,18 @@
                         <th>Payment</th>
                         <th>Date</th>
                       </tr>
+                      {% for record in history %}
                       <tr>
-                        <td>User 1</td>
-                        <td>23</td>
-                        <td>Male</td>
-                        <td>7891631219</td>
+                        <td>{{ record.name }}</td>
+                        <td>{{ record.age }}</td>
+                        <td>{{ record.gender }}</td>
+                        <td>{{ record.phone }}</td>
                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Date here</td>
+                        <td>{{ record.date }}</td>
 
                         </tr>
-                      <tr>
+                      {% endfor %}
+                      <!-- <tr>
                         <td>User 1</td>
                         <td>23</td>
                         <td>Male</td>
@@ -165,7 +167,7 @@
 		                        <td>7891631219</td>
 		                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
 		                        <td>Date here</td>
-                                </tr>
+                                </tr> -->
                     </table>
               </div>
               </div>

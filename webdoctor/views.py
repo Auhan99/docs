@@ -93,10 +93,21 @@ def register(request):
         userprofile.save()
         return HttpResponse('success')
 
-def booked(request):
+def booked(request, pk):
     if request.method == 'POST':
         post = request.POST
-        firstName = post.get('firstname_booking', None)
-        lastName = post.get('lastname_booking', None)
+        name = post.get('firstname_booking', None)
+        # lastName = post.get('lastname_booking', None)
+        phone = post.get('telephone_booking', None)
+        age = post.get('Age', None)
+        gender = post.get('gender', None)
+        docrecord = DocHistory.objects.create(name=name, age=age, gender=gender, phone=phone)
+        docrecord.doctorInConcern_id = pk
+        docrecord.save()
+        return HttpResponse('<div class="jumbotron"><h1>Your Booking Was Successful!!</h1></div>')
         
+
+def history(request, pk):
+    history = DocHistory.objects.filter(doctorInConcern__id=pk)
+    return render(request, 'dochistory.html', context={'history': history})
 

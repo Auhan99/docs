@@ -81,21 +81,23 @@
 						<p>
 							Mussum ipsum cacilds, vidis litro abertis.
 						</p>
-					</div>
+                    </div>
 					<div class="step">
+                        <form action="{% url 'bookedurl' doctor.id %}" method="POST">
+                            {% csrf_token %}
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
 								<div class="form-group">
-									<label>First name</label>
+									<label>Name</label>
 									<input type="text" class="form-control" id="firstname_booking" name="firstname_booking"  value="{{request.user.email}}">
 								</div>
 							</div>
-							<div class="col-md-6 col-sm-6">
+							<!-- <div class="col-md-6 col-sm-6">
 								<div class="form-group">
 									<label>Last name</label>
 									<input type="text" class="form-control" id="lastname_booking" name="lastname_booking" placeholder="Doe">
 								</div>
-							</div>
+							</div> -->
 						</div>
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
@@ -123,9 +125,9 @@
 								<div class="form-group">
 									<select class="form-control" name="gender" id="gender">
 										<option value="">Select your gender</option>
-										<option value="Europe">Male</option>
-										<option value="United states">Female</option>
-										<option value="Asia">Other</option>
+										<option value="male">Male</option>
+										<option value="female">Female</option>
+										<option value="other">Other</option>
 									</select>
 								</div>
 							</div>
@@ -138,8 +140,8 @@
 								</div>
 							</div>
 						</div>
-						
-						
+                        <button type="submit" class="btn btn-default">Submit</button>
+						</form>
 					</div>
 					<hr>
 					<!--End step -->
