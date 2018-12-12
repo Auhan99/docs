@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-8">
                         <div class="box_general_3 cart">
-                            {% if user.is_authenticated %}
+                            {% if request.user.is_authenticated %}
                             <div class="message">
                                 <p>Exisitng Customer? <a href="#0">Click here to login</a></p>
                             </div>
@@ -84,26 +84,27 @@
                                     Mussum ipsum cacilds, vidis litro abertis.
                                 </p>
                             </div>
+                            <form action="/booked_url/" method="POST">
                             <div class="step">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label>First name</label>
+                                            <label>Name</label>
                                             <input type="text" class="form-control" id="firstname_booking" name="firstname_booking" value="{{request.user.email}}">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-sm-6">
+                                    <!-- <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <label>Last name</label>
                                             <input type="text" class="form-control" id="lastname_booking" name="lastname_booking" placeholder="Doe">
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" id="email_booking" name="email_booking" class="form-control" placeholder="jhon@doe.com">
+                                            <label>Age</label>
+                                            <input type="text" id="email_booking" name="age" class="form-control" placeholder="18">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6">
@@ -248,6 +249,7 @@
                                 </div>
                                 <!--End row -->
                             </div>
+                            </form>
                             <hr>
                             <!--End step -->
                             <div id="policy">

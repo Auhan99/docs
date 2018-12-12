@@ -93,3 +93,10 @@ def register(request):
         userprofile.save()
         return HttpResponse('success')
 
+def booked(request):
+    if request.method == 'POST':
+        post = request.POST
+        firstName = post.get('firstname_booking', None)
+        lastName = post.get('lastname_booking', None)
+        
+

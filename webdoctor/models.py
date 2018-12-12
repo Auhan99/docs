@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,PermissionsMixin
 from django.contrib.auth.models import UserManager
+from datetime import datetime    
 
 class UserManager(UserManager):
     use_in_migrations = True
@@ -39,11 +40,7 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     objects = UserManager()
     def get_short_name(self):
         return self.email
-
-
-
-
-
+        
 
 class categorie(models.Model):
     category=models.CharField(max_length=100,null=True)
@@ -77,4 +74,13 @@ class PinCode(models.Model):
     pin=models.CharField(max_length=100,null=True)
     def __str__(self):
         return str(self.pin)
+
+class DocHistory(models.Model):
+    doctorInConcern = models.ForeignKey(doctor, null=True, blank=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100; null=True)
+    age = models.IntegerField(default=18, null=True)
+    gender = models.CharField(max_length=20, null=True)
+    phone = models.CharField(max_length=20, null=True)
+    payment = models.BooleanField(default=True)
+    date = models.DateTimeField(default=datetime.now, null=True)
 

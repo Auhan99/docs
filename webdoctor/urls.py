@@ -9,5 +9,4 @@ urlpatterns = [
     url(r'^details/(?P<pk>\d+)/$', views.details),
     url(r'^book/(?P<pk>\d+)/$',views.bookDoctor),
     url(r'^reg$', views.register),
-
 ]
