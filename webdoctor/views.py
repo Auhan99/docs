@@ -6,6 +6,18 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from suraj.settings import LOGIN_URL
 from django.shortcuts import get_object_or_404
+from .key import key
+import json
+from django.http import JsonResponse
+
+def getnear(request,lat,lag):
+    url="https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lag+"&key="+key
+    address=request.get(url).json()    ##remove .json() if error pops up
+    postal_code=address['results'][0]['address_components'][6]['long_name']
+    pin=PinCode.objects.filter(pin=postal_code)
+    docs=doctor.objects.filter(pin=pin)
+    return JsonResponse({'doctors':docs,})
+
 
 def home(request):
     categories= categorie.objects.all()
@@ -49,7 +61,6 @@ def form(request):
         return redirect('/')
 
 
-@login_required(login_url=LOGIN_URL)
 def search(request):
     if request.method=="GET":
         data=request.GET
@@ -81,4 +92,22 @@ def register(request):
         userprofile.set_password(password)
         userprofile.save()
         return HttpResponse('success')
+
+def booked(request, pk):
+    if request.method == 'POST':
+        post = request.POST
+        name = post.get('firstname_booking', None)
+        # lastName = post.get('lastname_booking', None)
+        phone = post.get('telephone_booking', None)
+        age = post.get('Age', None)
+        gender = post.get('gender', None)
+        docrecord = DocHistory.objects.create(name=name, age=age, gender=gender, phone=phone)
+        docrecord.doctorInConcern_id = pk
+        docrecord.save()
+        return HttpResponse('<div class="jumbotron"><h1>Your Booking Was Successful!!</h1></div>')
+        
+
+def history(request, pk):
+    history = DocHistory.objects.filter(doctorInConcern__id=pk)
+    return render(request, 'dochistory.html', context={'history': history})
 
