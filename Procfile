@@ -1,0 +1,1 @@
+web: gunicorn suraj.wsgi --log-file -

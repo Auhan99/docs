@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Doctor Around
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="{% static "home/css/style.css" %}">
+	<script type="text/javascript" src="{% static "home/js/main.js" %}"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'home/css/fullpage.css' %}" />
+	<script src="{% static 'home/js/easings.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'home/js/fullpage.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static "searchresults/css/datapicker.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "searchresults/css/menu.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "searchresults/css/style.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "searchresults/css/vendor.css" %}">
+	<style type="text/css">
+		.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 15% auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 70%;
+    position: relative;
+    transition: all 5s ease-in-out;
+    height: 50%;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: red;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+	</style>
+	<style type="text/css">
+		.container{
+			width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+		}
+@media only screen and (max-width: 768px) 
+{
+	.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+}
+	</style>
+
+</head>
+<body>
+		<nav class="navbar navbar-expand-xl navbar-dark bg-dark sticky-top">
+			<div class="container">
+				<a href="#!" class="navbar-brand">Hello!</a>
+				<button class="navbar-toggler" data-toggle="collapse" data-target="#mobilenav">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="mobilenav">
+					<ul class="navbar-nav ml-auto text-center">
+						<li class="nav-item">
+							<a href="" class="nav-link">home </a>
+						</li>
+						<li class="nav-item">
+							<a href="" class="nav-link">About </a>
+						</li>
+						<li class="nav-item">
+							<a href="" class="nav-link">Contact </a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right" style="margin-left: 10px;">
+      
+      <li><a href="register"><i class="fas fa-sign-in-alt" style="margin-right: 5px;"></i>Login</a></li>
+    </ul>
+				</div>
+			</div>
+		</nav>
+		<main style="background: #f5f8fa;
+    z-index: 1;">
+		
+			<div class="filters_listing" style="border-bottom: 1px solid #c4c4c4;position: -webkit-sticky;
+    position: sticky;top:54px;z-index: 100;background-color: #c4c4c4;padding: 15px 0;">
+				<div class="container">
+					<ul class="clearfix" style="margin: 0;padding: 0; list-style: none;">
+						
+						<li style="margin-right: 10px;float: left;">
+						<h6 style="    font-size: .75rem;
+    color: #999;
+    margin-bottom: 5px;">
+							Sort by
+						</h6>
+						<select class="selectpicker">
+						  <option>close</option>
+						  <option>rate</option>
+						  <option>price</option>
+						</select>
+
+
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container" style="border-color: #c4c4c4; height: auto; padding-top: 20px; padding-bottom:  20px;">
+			<div class="row">
+				<div class="col-md-7">
+
+                {% for i in doctors %}
+				<div class="" style="background-color: #fff;border-radius: 3px;padding-bottom: 1px; margin-bottom: 10px;">
+					<div class="row">
+					<div class="col-md-3" style="height: 80px;width: 80px;/* position: absolute; *//* margin: 15px; */padding-top: 15px;padding-left: 25px;">
+						<img src="{% static 'searchresults/image/Doctor.png' %}" style="border-radius: 50%; height: 80px; ">
+					</div>
+					<div class="col-md-9" style="padding-top: 10px;">
+						<small>PEDIATRICIAN</small>
+						<br>
+						<name style="font-size: x-large; line-height: 40px;">{{ i.doctorName }}</name>
+						<br>
+						<info>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cuodo....</info>
+					</div>
+				</div>
+				<ul style="border-top: 1px solid #c4c4c4;padding: 20px 10px 0px;margin-top: 10px;/* margin-right: 12px; */">
+					<li style="display: inline-block;margin-right: 20px;margin-left: 10px;">
+						<a href="#map" style="color:#000;">View on Map</a>
+						<div id="map" class="overlay">
+							<div class="popup">
+								<a class="close" href="#">&times;</a>
+								<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14432.656546420269!2d82.988028!3d25.2650634!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1538830995502" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+							</div>
+						</div>
+
+					</li>
+					<li style="display: inline-block;">
+						Call
+					</li>
+					<li style="display: inline-block; float: right;">
+						<a href="connect.html" style="border: 2px solid #c4c4c4;cursor: pointer;padding: 5px 20px;color: black; border-radius: 30px;">Connect</a>
+					</li>
+				</ul>
+			</div>
+                {% endfor %}
+                </div>
+			<aside class="col-md-5" style="border-color: #000; height: 500px;position: -webkit-sticky;
+  position: sticky;
+  top: 20%;
+    ">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14432.704509603183!2d82.9877761!3d25.26465995!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1538815247298" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+				
+			</aside>
+			
+			</div></div></main>
+			<!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">Footer Content</h5>
+          <p>Here you can use rows and columns here to organize your footer content.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+</body>
+</html>
