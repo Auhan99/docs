@@ -54,7 +54,7 @@ class doctor(models.Model):
     doctorName=models.CharField(max_length=100,null=True)
     shortinfo = models.CharField(max_length=250, null=True)
     address=models.CharField(max_length=250,null=True)
-    pin=models.ForeignKey('PinCode',null=True, blank=True,on_delete=models.CASCADE)
+    pin=models.ForeignKey('Pin',null=True, blank=True,on_delete=models.CASCADE)
     phone = models.CharField(max_length=250, null=True)
     professionalstatement = models.CharField(max_length=250, null=True)
     education = models.CharField(max_length=250, null=True)
@@ -68,10 +68,15 @@ class City(models.Model):
     def __str__(self):
         return "%s " %(self.City_Name )
 
+class Pin(models.Model):
+    pin=models.CharField(max_length=100,null=True)
+    def __str__(self):
+        return "%s " %(self.pin )
 
 class PinCode(models.Model):
     city=models.ForeignKey(City,null=True, blank=True,on_delete=models.CASCADE)
-    pin=models.CharField(max_length=100,null=True)
+    docs=models.ManyToManyField(doctor,null=True, blank=True)
+    pin=models.ForeignKey(Pin,null=True, blank=True,on_delete=models.CASCADE)
     def __str__(self):
         return str(self.pin)
 
@@ -86,3 +91,10 @@ class DocHistory(models.Model):
     def __str__(self):
         return "%s %s" %(self.name, self.date)
 
+
+class Pos(models.Model):
+	lat=models.CharField(max_length=100,null=True)
+	lan=models.CharField(max_length=100,null=True)
+	name = models.CharField(max_length=100, null=True)
+	def __str__(self):
+   		return str(self.name)

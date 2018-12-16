@@ -6,9 +6,24 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from suraj.settings import LOGIN_URL
 from django.shortcuts import get_object_or_404
+from django.core import serializers
 from .key import key
 import json
 from django.http import JsonResponse
+
+
+# def test(request):
+#     pin=PinCode.objects.filter(pin="221005")
+#     docs=doctor.objects.filter(pin__in="221005")
+#     #aas=PinCode.objects.all().values_list(pin)
+#     print(docs)
+#     posts_serialized = serializers.serialize('json', docs)
+#     return JsonResponse({'doctors':posts_serialized,})
+
+def test(request):
+	p=Pos.objects.all()
+	print(p)
+	return render(request,'maps.html',context={'markers':p,})
 
 def getnear(request,lat,lag):
     url="https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lag+"&key="+key
@@ -16,7 +31,7 @@ def getnear(request,lat,lag):
     postal_code=address['results'][0]['address_components'][6]['long_name']
     pin=PinCode.objects.filter(pin=postal_code)
     docs=doctor.objects.filter(pin=pin)
-    return JsonResponse({'doctors':docs,})
+    return JsonResponse({'doctors':docs,key:key})
 
 
 def home(request):
