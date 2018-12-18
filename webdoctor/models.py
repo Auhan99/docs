@@ -85,4 +85,3 @@ class DocHistory(models.Model):
     date = models.DateTimeField(default=datetime.now, null=True)
     def __str__(self):
         return "%s %s" %(self.name, self.date)
-
